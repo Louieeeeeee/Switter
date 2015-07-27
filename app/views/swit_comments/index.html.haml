@@ -1,0 +1,25 @@
+%h1 Listing swit_comments
+
+%table
+  %thead
+    %tr
+      %th Swit
+      %th User
+      %th Comment
+      %th
+      %th
+      %th
+
+  %tbody
+    - @swit_comments.each do |swit_comment|
+      %tr
+        %td= swit_comment.swit_id
+        %td= swit_comment.user_id
+        %td= swit_comment.comment
+        %td= link_to 'Show', swit_comment
+        %td= link_to 'Edit', edit_swit_comment_path(swit_comment)
+        %td= link_to 'Destroy', swit_comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Swit comment', new_swit_comment_path

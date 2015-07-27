@@ -1,0 +1,25 @@
+%h1 Listing swit_statuses
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Swit
+      %th Status
+      %th
+      %th
+      %th
+
+  %tbody
+    - @swit_statuses.each do |swit_status|
+      %tr
+        %td= swit_status.user_id
+        %td= swit_status.swit_id
+        %td= swit_status.status
+        %td= link_to 'Show', swit_status
+        %td= link_to 'Edit', edit_swit_status_path(swit_status)
+        %td= link_to 'Destroy', swit_status, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Swit status', new_swit_status_path

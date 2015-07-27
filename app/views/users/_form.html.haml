@@ -1,0 +1,15 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.hidden_field :username, class: "form-control field", placeholder: "Username"
+  .field
+    = f.password_field :password, class: "form-control field", placeholder: "Password", required: true, id:"pass1"
+  .field
+    = f.password_field :password_confirmation, class: "form-control field", placeholder: "Confirm Password", required: true, id:"pass2"
+  .actions
+    = f.submit 'Update Password', class: "btn btn-success form-control field"

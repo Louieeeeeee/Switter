@@ -1,0 +1,18 @@
+= form_for @swit, remote: true do |f|
+  - if @swit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@swit.errors.count, "error")} prohibited this swit from being saved:"
+      %ul
+        - @swit.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.hidden_field :user_id, :value => session[:user_id]
+  .field
+    = f.text_area :message, :class => "form-control field", :placeholder => "Write your sweet here! :)", :rows => 4, :id => "SwitInput"
+  .field
+    = f.hidden_field :sweet, :value => 0
+  .field
+    = f.hidden_field :sour, :value => 0
+  .actions
+    = f.submit 'Save', :class => "btn btn-primary send-sweet pull-right", :id => "send-sweet"

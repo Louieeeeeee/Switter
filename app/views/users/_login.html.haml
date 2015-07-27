@@ -1,0 +1,5 @@
+= form_tag '/users/login' do
+  = field_set_tag do
+    = text_field_tag :username, nil, class: "form-control field2", placeholder: "Username"
+    = password_field_tag :password, nil, class: "form-control field2", placeholder: "password"
+    = submit_tag "Log In", class: "btn btn-success form-control field2"

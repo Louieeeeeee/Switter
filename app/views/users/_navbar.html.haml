@@ -1,0 +1,19 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  %div.container-fluid
+    %a.navbar-brand{:href => "#"} Switter
+    %div.navbar-header.navbar-right
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "#"} Home
+        %li
+          %a Sweets
+        %li.dropdown
+          %a.dropdown-toggle{:href => "#", :role => "button", :data => {:toggle=>"dropdown"}, "aria-haspopup" => "true", "aria-expanded" => "false"}
+            =session[:username]
+            %span.caret
+          %ul.dropdown-menu
+            %li 
+              -@user = User.find(session[:user_id])
+              = link_to 'Change Password', edit_user_path(@user)
+            %li 
+              %a{:href=>"users/destroy"} Logout

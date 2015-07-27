@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @swit_status.user_id
+%p
+  %b Swit:
+  = @swit_status.swit_id
+%p
+  %b Status:
+  = @swit_status.status
+
+= link_to 'Edit', edit_swit_status_path(@swit_status)
+\|
+= link_to 'Back', swit_statuses_path

@@ -1,0 +1,2 @@
+module SwitStatusesHelper
+end

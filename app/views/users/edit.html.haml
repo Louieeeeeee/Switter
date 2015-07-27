@@ -1,0 +1,11 @@
+%body.swits
+	=render "swits/navbar"
+	%div.container-fluid.view-sweets
+		%br
+		-flash.each do |key, value|
+			= content_tag :div, value, class: "flash #{key}"
+		%div.container-fluid.sweet-container
+			%center
+				%h1.labels= session[:username]
+			%div.change-password
+				= render 'form'

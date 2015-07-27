@@ -1,0 +1,12 @@
+%body.swits
+  =render "navbar"
+  %div.container-fluid.view-sweets
+    %br
+    %center
+      %div.container-fluid.counter-container.display
+        %span.pull-right#counter
+    %div.container-fluid.sweet-container
+      =render "form"
+    %div#swits
+    - @swits.each do |post|
+      =render :partial => "swits",  :locals => {:swit => post} 

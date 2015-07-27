@@ -1,0 +1,7 @@
+= form_tag '/swits/create', remote: true do
+    = field_set_tag do
+        = hidden_field_tag :user_id, session[:user_id]
+        = hidden_field_tag :sweet, 0
+        = hidden_field_tag :sour, 0
+        = text_area :message, nil, class: "form-control field", placeholder: "Write your sweet here! :)", name: "swit[message]", rows: 4, id: "SwitInput"
+        = submit_tag "Swit!", class: "btn btn-primary send-sweet pull-right", id: "send-sweet"

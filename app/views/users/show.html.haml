@@ -1,0 +1,14 @@
+%div.container-fluid.index
+  %div.container
+    %div.title
+      %span.label.label-primary Welcome to Switter!
+    %div.user_input
+      - flash.each do |key, value|
+        = content_tag :div, value, class: "flash #{key} alert-warning"
+      %h3.labels Log In
+      =render 'login'
+  %div.container
+    %div.user_input
+      %h3.labels New User? <small> Sign up now! </small>
+      =render 'signup'
+

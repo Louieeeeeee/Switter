@@ -1,0 +1,42 @@
+%div.container.sweet-container-view
+  %h4.user= swit.user.username
+  %h6.pull-right= time_ago_in_words(swit.created_at) + " ago"
+  %p= swit.message
+  %p.display
+    %span.display#sweet= swit.swit_statuses.where(:status => 0).count
+    sweets 
+    |
+    %span.display#sour= swit.swit_statuses.where(:status => 1).count
+    sours
+  %div.btn-group.btn-group-justified.switter
+    %table
+      %tr
+        %td
+          = form_tag 'swit_statuses/sweet' do
+            = field_set_tag do
+              = hidden_field_tag :user_id, session[:user_id], name: "swit_status[user_id]"
+              = hidden_field_tag :swit_id, swit.id, name: "swit_status[swit_id]"
+              = hidden_field_tag :status, :sweet, name: "swit_status[status]"
+              = submit_tag "Sweet!", class: "btn btn-primary sweet"
+        %td
+          = form_tag 'swit_statuses/sour' do
+            = field_set_tag do
+              = hidden_field_tag :user_id, session[:user_id], name: "swit_status[user_id]"
+              = hidden_field_tag :swit_id, swit.id, name: "swit_status[swit_id]"
+              = hidden_field_tag :status, :sour, name: "swit_status[status]"
+              = submit_tag "Sour!", class: "btn btn-primary sour"
+
+  %div.btn-group.btn-group-justified.switter
+  = form_tag 'swit_comments/create' do
+    = field_set_tag do
+      = hidden_field_tag :user_id, session[:user_id], name: "swit_comment[user_id]"
+      = hidden_field_tag :swit_id, swit.id, name: "swit_comment[swit_id]"
+      = text_area :comment, nil, class: "form-control field2", placeholder: "Write comment here...", name: "swit_comment[comment]"
+      = submit_tag "Comment", class: "btn btn-primary form-control field2"
+  -if swit.swit_comments.count > 0
+    %div.comment-view
+      %h6 Comments: 
+      -swit.swit_comments.each do |swit_comment|
+        %div.comment-container.comment-message
+          %span.username= swit_comment.user.username
+          %div.comment= swit_comment.comment
